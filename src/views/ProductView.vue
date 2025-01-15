@@ -27,16 +27,14 @@ const mapIconsSpec = new Map([
 
 const getIcon = (elem) => {
     let res = mapIconsSpec.get(elem.characteristic)
-    console.log(`${elem.characteristic} : ${res}`)
+    console.info(`${elem.characteristic} : ${res}`)
     return res == undefined ? '' : res
 }
 
-watch(() => route.params.id, fetchData, { immediate: true })
-
-async function fetchData(id) {
+const getData = async (id) => {
     error.value = post.value = null
     loading.value = true
-  
+    
     try {
         post.value = await getProduct(id)  
     } catch (err) {
@@ -45,6 +43,8 @@ async function fetchData(id) {
         loading.value = false
     }
 }
+
+watch(() => route.params.id, getData, { immediate: true })
 </script>
 
 <script>
@@ -69,12 +69,15 @@ export default {
             <div class="product-images">
                 <img :src="buildPath(post.images[0])">
             </div>
+            
             <div class="product-info container-flex-column">
                 <div class="product-title">{{post.name}}</div>
                 <div class="product-price container-flex-row"><p>${{post.discount_price ? post.discount_price : post.price}}</p><s>{{post.discount_price ? `$${post.price}` : ''}}</s></div>
                 <div class="product-specs container-flex-row">
                     <div v-for="characteristic in post.characteristics" class="product-spec container-flex-row">
-                        <div class="ps-image" ><img :src="getIcon(characteristic)"></div>
+                        <div class="ps-image" >
+                            <img :src="getIcon(characteristic)">
+                        </div>
                         <div class="ps-text" >
                             <h3>{{characteristic.characteristic}}</h3>
                             <p>{{characteristic.value}}</p>
@@ -83,8 +86,12 @@ export default {
                 </div>
                 <div class="product-descr"></div>
                 <div class="product-actions container-flex-row">
-                    <button class="action-wishlist">Add to Wishlist</button>
-                    <button class="action-cart" @click.native="addProductToCart(post)">Add to Cart</button>
+                    <button class="action-wishlist">
+                        Add to Wishlist
+                    </button>
+                    <button class="action-cart" @click="addProductToCart(post)">
+                        Add to Cart
+                    </button>
                 </div>
                 <div class="product-misc container-flex-row">
                     <div class="misc-delivery container-flex-row">
@@ -111,12 +118,19 @@ export default {
                 </div>
             </div>
         </div>
+
         <div class="product-details container-flex-column">
             <h2>Details</h2>
             <ul v-for="characteristic in post.characteristics" >
-                <li><div class="details-flex-row container-flex-row"><p>{{characteristic.characteristic}}</p><p>{{characteristic.value}}</p></div></li>
+                <li>
+                    <div class="details-flex-row container-flex-row">
+                        <p>{{characteristic.characteristic}}</p>
+                        <p>{{characteristic.value}}</p>
+                    </div>
+                </li>
             </ul>
         </div>
+
         <div class="product-mark container-flex-column">
             <div class="product-mark-box">
                 <h3>{{post.rating}}</h3>

@@ -6,7 +6,6 @@ import minus from '../assets/img/cart/minus.svg'
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { buildPath } from '../api.js'
 
 export default {
   computed: {
@@ -50,19 +49,34 @@ export default {
                     <router-link :to="`/api/product/${product.product.id}`">
                     <img style="height: 128px" :src="buildPath(product.product.images[0])">
                     </router-link>
+
                     <div class="item-title">{{product.product.name}}</div>
+
                     <div class="item-counter container-flex-row">
-                        <button class="count-down" @click.native="removeProductFromCart(product.product)"><img :src="minus"></button>
+                        <button class="count-down" @click.native="removeProductFromCart(product.product)">
+                            <img :src="minus">
+                        </button>
                         <input class="count-input" type="tel" :value="product.count"></input>
-                        <button class="count-up" @click.native="addProductToCart(product.product)"><img :src="plus"></button>
+                        <button class="count-up" @click.native="addProductToCart(product.product)">
+                            <img :src="plus">
+                        </button>
                     </div>
-                    <div class="item-price container-flex-row"><p>${{product.product.discount_price ? product.product.discount_price : product.product.price}}</p></div>
+
+                    <div class="item-price container-flex-row">
+                        <p>${{product.product.discount_price ? product.product.discount_price : product.product.price}}</p>
+                    </div>
                 </div>
             </div>
+            
             <div class="cart-summary container-flex-column">
                 <h2>Order Summary</h2>
-                <div class="cart-total container-flex-row"><p style="padding-right: 20%; padding-top: 1rem;">Total</p><p>${{totalPrice()}}</p></div>
-                <button class="cart-checkout">Checkout</button>
+                <div class="cart-total container-flex-row">
+                    <p style="padding-right: 20%; padding-top: 1rem;">Total</p>
+                    <p>${{totalPrice()}}</p>
+                </div>
+                <button class="cart-checkout">
+                    Checkout
+                </button>
             </div>
         </div>
     </div>

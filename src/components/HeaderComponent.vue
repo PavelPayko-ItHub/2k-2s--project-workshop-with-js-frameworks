@@ -1,22 +1,29 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
     <div class="header-top container container-flex-row">
         <div class="header-logo">
-            <router-link to="/"><img src="../assets/img/header/logo_vector.svg"></router-link>
+            <router-link to="/">
+                <img src="../assets/img/header/logo.svg">
+            </router-link>
         </div>
+
         <div class="header-search container-flex-row">
-            <div class="header-image"><img src="../assets/img/header/search_vector.svg" ></div>
+            <div class="header-image">
+                <img src="../assets/img/header/search.svg">
+            </div>
             <input type="search" class="header-input" title="Search" value="Search">
         </div>
+
         <div class="header-icons container-flex-row">
             <div class="header-icon">
-                <img src="../assets/img/header/favorites_vector.svg">
+                <img src="../assets/img/header/favorites.svg">
             </div>
+
             <div class="header-icon">
-                <router-link to="/cart"><img src="../assets/img/header/cart_vector.svg"></router-link>
+                <router-link to="/cart">
+                    <img src="../assets/img/header/cart.svg">
+                </router-link>
             </div>
         </div>
     </div>

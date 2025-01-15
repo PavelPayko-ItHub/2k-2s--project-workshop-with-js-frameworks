@@ -1,5 +1,5 @@
 <script setup>
-import Categories from '../components/Categories.vue'
+import Categories from '../components/CategoriesComponent.vue'
 </script>
 
 <template>

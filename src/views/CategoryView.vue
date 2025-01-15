@@ -10,9 +10,7 @@ const loading = ref(false)
 const post = ref(null)
 const error = ref(null)
 
-watch(() => route.params.id, fetchData, { immediate: true })
-
-async function fetchData(id) {
+const getData = async (id) => {
     error.value = post.value = null
     loading.value = true
   
@@ -24,14 +22,13 @@ async function fetchData(id) {
         loading.value = false
     }
 }
-// https://codesandbox.io/s/route-params-vue-router-examples-mlb14?from-embed=&initialpath=/users/eduardo/posts/1&file=/src/main.js:60-93
-// https://router.vuejs.org/guide/essentials/dynamic-matching.html
-// https://router.vuejs.org/guide/advanced/data-fetching
-// https://codesandbox.io/s/dynamic-component-rendering-using-vuejs-5z6ff?fontsize=14&file=/src/App.vue
+
+watch(() => route.params.id, getData, { immediate: true })
+
 </script>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   methods: {
@@ -48,9 +45,8 @@ export default {
 
 <template>
 <div class="category container container-flex-column">
-    <div class="category-menu">
-    
-    </div>
+    <div class="category-menu"></div>
+
     <div v-if="post" class="category-content container-flex-row">
         <div class="category-content-head container-flex-row">
             <h2 class="category-content-head-title">Selected Products: {{post.length}}</h2>
@@ -60,6 +56,7 @@ export default {
                 <option value="By price">By price</option>
             </select>
         </div>
+
         <div class="category-content-body container-flex-row">
             <div v-for="product in post" class="product-card container-flex-column">
                 <router-link :to="`/api/product/${product.id}`">
@@ -72,9 +69,12 @@ export default {
                     <p class="product-card-title">{{ product.name }}</p>
                     <div class="product-card-price">${{product.price}}</div>
                 </router-link>
-                <button class="product-card-action" @click.native="addProductToCart(product)">Buy Now</button>
+                <button class="product-card-action" @click="addProductToCart(product)">
+                    Buy Now
+                </button>
             </div>
         </div>
+
         <div class="category-content-pages">
     
         </div>

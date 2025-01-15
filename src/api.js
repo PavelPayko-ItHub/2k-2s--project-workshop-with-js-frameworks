@@ -1,24 +1,20 @@
-const endpoint = 'http://localhost:1452'
-const target_category = '/api/category/'
-const target_subcategory = '/api/subcategory/'
-const target_products = '/api/products/'
+const API = 'http://localhost:1452'
+const category_path = '/api/category/'
+const products_path = '/api/products/'
 
 function buildPath(target) {
-    let ep = endpoint
-    return ep.concat('/', target)
+    return API.concat('/', target)
 }
 
 async function getCategory(id) {
-    let ep = endpoint
-    const remote = ep.concat('', `${target_category}${id}`)
-    console.log(remote)
+    const remote = API.concat('', `${category_path}${id}`)
+    console.info(remote)
     const response = await fetch(remote)
     return response.json();
 }
 
 async function getProduct(id) {
-    let ep = endpoint
-    const response = await fetch(ep.concat('', `${target_products}${id}`))
+    const response = await fetch(API.concat('', `${products_path}${id}`))
     return response.json();
 }
 

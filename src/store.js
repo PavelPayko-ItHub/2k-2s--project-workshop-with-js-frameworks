@@ -18,7 +18,7 @@ const store = createStore({
 
     mutations: {
         ADD_PRODUCT: (state, product) => {
-            console.log(`ADD_PRODUCT size ${state.cartProducts.size}`)
+            console.info(`ADD_PRODUCT size ${state.cartProducts.size}`)
             let cached = state.cartProducts.get(product.id)
             if (cached === undefined) {
                 const obj = {
@@ -27,16 +27,15 @@ const store = createStore({
                 };
                 state.cartProducts.set(product.id, obj);
             } else {
-                console.log(`ADD_PRODUCT Cached ${product.id} : ${cached.count} items`)
+                console.info(`ADD_PRODUCT Cached ${product.id} : ${cached.count} items`)
                 cached.count += 1;
             }
         },
         REMOVE_PRODUCT: (state, product) => {
-            console.log(`REMOVE_PRODUCT size ${state.cartProducts.size}`)
-            let cached = state.cartProducts.get(product.id)
-            if (cached === undefined) {
-            } else {
-                console.log(`REMOVE_PRODUCT Cached ${product.id} : ${cached.count} items`)
+            console.info(`REMOVE_PRODUCT size ${state.cartProducts.size}`)
+            const cached = state.cartProducts.get(product.id)
+            if (cached) {
+                console.info(`REMOVE_PRODUCT Cached ${product.id} : ${cached.count} items`)
                 cached.count -= 1;
                 if (cached.count === 0) {
                     state.cartProducts.delete(product.id)
@@ -57,11 +56,11 @@ const store = createStore({
     actions: {
         addProduct: (context, product) => {
             context.commit('ADD_PRODUCT', product);
-            console.log(`Product added: ${product.id}`)
+            console.info(`Product added: ${product.id}`)
         },
         removeProduct: (context, product) => {
             context.commit('REMOVE_PRODUCT', product);
-            console.log(`Product removed: ${product.id}`)
+            console.info(`Product removed: ${product.id}`)
         },
         currentProduct: (context, product) => {
             context.commit('CURRENT_PRODUCT', product);

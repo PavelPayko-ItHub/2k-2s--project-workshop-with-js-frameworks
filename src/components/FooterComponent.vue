@@ -1,11 +1,12 @@
 <template>
-    <!-- footer section start -->
     <div class="container-footer">
         <div class="container container-flex-column">
             <div class="footer-info container-flex-row">
                 <div class="footer-cyber container-flex-row">
-                    <img src="../assets/img/footer/logo_vector.svg" style="padding-top: 0%; height: 15%">
-                    <p class="footer-cyber-text">We are a residential interior design firm located in Portland. Our boutique-studio offers more than</p>
+                    <img src="../assets/img/footer/logo.svg" style="padding-top: 0%; height: 15%">
+                    <p class="footer-cyber-text">
+                        We are a residential interior design firm located in Portland. Our boutique-studio offers more than
+                    </p>
                 </div>
                 <div class="footer-services">
                     <h2 style="font-size: 16px;">Services</h2>
@@ -39,7 +40,6 @@
     
         </div>
     </div>
-    <!-- footer section end -->
 </template>
 
 <style scoped>

@@ -11,13 +11,44 @@
             <img src="../assets/img/category/arrow_right.svg" style="padding-left: 32px;">
         </div>
     </div>
+    
     <div class="categories-cnt container-flex-row">
-        <div class="category-card"><router-link to="/api/category/2"><img src="../assets/img/category/phones.svg"><p>Phones</p></router-link></div>
-        <div class="category-card"><router-link to="/api/category/5"><img src="../assets/img/category/smartwatches.svg"><p>Smart Watches</p></router-link></div>
-        <div class="category-card"><router-link to="/api/category/2"><img src="../assets/img/category/cameras.svg"><p>Cameras</p></router-link></div>
-        <div class="category-card"><router-link to="/api/category/6"><img src="../assets/img/category/headphones.svg"><p>Headphones</p></router-link></div>
-        <div class="category-card"><router-link to="/api/category/3"><img src="../assets/img/category/computers.svg"><p>Computers</p></router-link></div>
-        <div class="category-card"><router-link to="/api/category/4"><img src="../assets/img/category/gaming.svg"><p>Gaming</p></router-link></div>
+        <div class="category-card">
+            <router-link to="/api/category/2">
+                <img src="../assets/img/category/phones.svg">
+                <p>Phones</p>
+            </router-link>
+        </div>
+        <div class="category-card">
+            <router-link to="/api/category/5">
+                <img src="../assets/img/category/smartwatches.svg">
+                <p>Smart Watches</p
+                    ></router-link>
+                </div>
+        <div class="category-card">
+            <router-link to="/api/category/2">
+                <img src="../assets/img/category/cameras.svg">
+                <p>Cameras</p>
+            </router-link>
+        </div>
+        <div class="category-card">
+            <router-link to="/api/category/6">
+                <img src="../assets/img/category/headphones.svg">
+                <p>Headphones</p>
+            </router-link>
+        </div>
+        <div class="category-card">
+            <router-link to="/api/category/3">
+                <img src="../assets/img/category/computers.svg">
+                <p>Computers</p>
+            </router-link>
+        </div>
+        <div class="category-card">
+            <router-link to="/api/category/4">
+                <img src="../assets/img/category/gaming.svg">
+                <p>Gaming</p>
+            </router-link>
+        </div>
         <router-view></router-view>
     </div>
 </div>
